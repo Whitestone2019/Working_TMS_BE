@@ -80,7 +80,7 @@ public class TraineeAssessmentAttemptService {
     	
     	LocalTime now = LocalTime.now();
 
-        if (now.isBefore(LocalTime.of(9, 0)) || now.isAfter(LocalTime.of(16, 0))) {
+        if (now.isBefore(LocalTime.of(10, 0)) || now.isAfter(LocalTime.of(16, 0))) {
             throw new RuntimeException("Assessment can only be attempted between 10 AM to 4 PM");
         }
 
