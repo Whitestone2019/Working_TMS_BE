@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "sub_topic")
+@Table(name = "SUB_TOPIC")
 @JsonIdentityInfo(
 	    generator = ObjectIdGenerators.PropertyGenerator.class,
 	    property = "id"
@@ -19,7 +19,12 @@ import jakarta.persistence.*;
 public class SubTopic extends AuditModel {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sub_topic_seq")
+    @SequenceGenerator(
+        name = "sub_topic_seq",
+        sequenceName = "sub_topic_seq",
+        allocationSize = 1
+    )
 	private Long id;
 
 	private int stepNumber = 0;
