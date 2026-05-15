@@ -24,7 +24,7 @@ import whitestone.trainee_management.service.UserService;
 
 
 @RequestMapping("/api/users")
-@CrossOrigin(origins = "*")
+@CrossOrigin
 public class UserController {
 
 	@Autowired
@@ -115,7 +115,8 @@ public class UserController {
 	public ApiResponse getSummary() {
 		return traineeAssessmentService.getTraineeSummary();
 	}
-
+	
+	
 	@PostMapping("/login")
 	public ApiResponse login(@RequestBody Map<String, String> body) {
 
