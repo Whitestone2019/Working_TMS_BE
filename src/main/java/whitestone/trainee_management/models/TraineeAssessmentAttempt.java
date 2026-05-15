@@ -10,9 +10,18 @@ import java.util.List;
 @Entity
 public class TraineeAssessmentAttempt extends AuditModel{
 
- @Id
- @GeneratedValue(strategy = GenerationType.IDENTITY)
- private Long id;
+// @Id
+// @GeneratedValue(strategy = GenerationType.IDENTITY)
+// private Long id;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "attempt_seq")
+	@SequenceGenerator(
+	    name = "attempt_seq",
+	    sequenceName = "attempt_seq",
+	    allocationSize = 1
+	)
+	private Long id;
 
  private String traineeId;
  //private List<String> trainerIds;

@@ -23,9 +23,18 @@ import jakarta.persistence.*;
 
 public class StepProgress extends AuditModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "step_progress_seq")
+	@SequenceGenerator(
+	    name = "step_progress_seq",
+	    sequenceName = "step_progress_seq",
+	    allocationSize = 1
+	)
+	private Long id;
 
     
     @ManyToOne

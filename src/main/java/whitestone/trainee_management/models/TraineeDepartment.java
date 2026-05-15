@@ -7,9 +7,18 @@ import jakarta.persistence.*;
 @Table(name = "trainee_departments")
 public class TraineeDepartment extends AuditModel{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "trainee_department_seq")
+	@SequenceGenerator(
+	    name = "trainee_department_seq",
+	    sequenceName = "trainee_department_seq",
+	    allocationSize = 1
+	)
+	private Long id;
 
     @ManyToOne
     @JoinColumn(

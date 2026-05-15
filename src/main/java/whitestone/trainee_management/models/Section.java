@@ -9,14 +9,24 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.SequenceGenerator;
 
 @Entity
 
 public class Section extends AuditModel{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "section_seq")
+	@SequenceGenerator(
+	    name = "section_seq",
+	    sequenceName = "section_seq",
+	    allocationSize = 1
+	)
+	private Long id;
 
     private String sectionName;
     private String time;

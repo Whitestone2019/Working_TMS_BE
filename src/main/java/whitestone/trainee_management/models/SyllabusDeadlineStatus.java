@@ -9,9 +9,18 @@ import java.time.LocalDateTime;
        uniqueConstraints = @UniqueConstraint(columnNames = {"trainee_id", "syllabus_id"}))
 public class SyllabusDeadlineStatus extends AuditModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "syllabus_deadline_status_seq")
+	@SequenceGenerator(
+	    name = "syllabus_deadline_status_seq",
+	    sequenceName = "syllabus_deadline_status_seq",
+	    allocationSize = 1
+	)
+	private Long id;
 
     @Column(name = "trainee_id")
     private String traineeId;

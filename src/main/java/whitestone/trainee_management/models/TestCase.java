@@ -6,9 +6,18 @@ import jakarta.persistence.*;
 @Entity
 public class TestCase extends AuditModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "testcase_seq")
+	@SequenceGenerator(
+	    name = "testcase_seq",
+	    sequenceName = "testcase_seq",
+	    allocationSize = 1
+	)
+	private Long id;
 
     @Column(length = 2000)
     private String input;

@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
@@ -18,9 +19,18 @@ import jakarta.persistence.UniqueConstraint;
 	)
 public class SyllabusFeedback extends AuditModel{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "syllabus_feedback_seq")
+	@SequenceGenerator(
+	    name = "syllabus_feedback_seq",
+	    sequenceName = "syllabus_feedback_seq",
+	    allocationSize = 1
+	)
+	private Long id;
 
     @ManyToOne
     @JoinColumn(name = "trainee_id", referencedColumnName = "trngid")

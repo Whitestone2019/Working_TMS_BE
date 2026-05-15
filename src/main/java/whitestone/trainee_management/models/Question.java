@@ -9,10 +9,19 @@ import java.util.List;
 
 public class Question extends AuditModel{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "question_seq")
+	@SequenceGenerator(
+	    name = "question_seq",
+	    sequenceName = "question_seq",
+	    allocationSize = 1
+	)
+	private Long id;
+	
     private String question;
 
     @ElementCollection

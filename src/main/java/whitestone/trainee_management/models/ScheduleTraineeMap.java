@@ -6,9 +6,18 @@ import jakarta.persistence.*;
 @Table(name = "schedule_user_map")
 public class ScheduleTraineeMap extends AuditModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "schedule_user_map_seq")
+	@SequenceGenerator(
+	    name = "schedule_user_map_seq",
+	    sequenceName = "schedule_user_map_seq",
+	    allocationSize = 1
+	)
+	private Long id;
 
     // Link to interview schedule
     @ManyToOne

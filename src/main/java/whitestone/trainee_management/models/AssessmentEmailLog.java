@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
@@ -13,9 +14,17 @@ import jakarta.persistence.UniqueConstraint;
 	)
 public class AssessmentEmailLog extends AuditModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "assessment_email_log_seq")
+	@SequenceGenerator(
+	    name = "assessment_email_log_seq",
+	    sequenceName = "assessment_email_log_seq",
+	    allocationSize = 1
+	)
+	private Long id;
 
     private String traineeId;
 

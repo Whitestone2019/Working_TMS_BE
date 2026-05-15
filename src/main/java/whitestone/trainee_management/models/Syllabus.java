@@ -17,10 +17,19 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 	)
 public class Syllabus extends AuditModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "syllabus_seq")
+	@SequenceGenerator(
+	    name = "syllabus_seq",
+	    sequenceName = "syllabus_seq",
+	    allocationSize = 1
+	)
+	private Long id;
+	
     private String title;
 
     private String topic;

@@ -7,9 +7,18 @@ import jakarta.persistence.*;
 @Entity
 public class QuestionAnswer extends AuditModel {
 
- @Id
- @GeneratedValue(strategy = GenerationType.IDENTITY)
- private Long id;
+// @Id
+// @GeneratedValue(strategy = GenerationType.IDENTITY)
+// private Long id;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "question_answer_seq")
+	@SequenceGenerator(
+	    name = "question_answer_seq",
+	    sequenceName = "question_answer_seq",
+	    allocationSize = 1
+	)
+	private Long id;
 
  private Long questionId;
 

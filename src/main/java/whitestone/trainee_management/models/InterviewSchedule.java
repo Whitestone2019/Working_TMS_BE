@@ -10,9 +10,18 @@ import java.util.List;
 @Table(name = "interview_schedule")
 public class InterviewSchedule extends AuditModel {
 
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	private Long scheduleId;
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long scheduleId;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "interview_schedule_seq")
+    @SequenceGenerator(
+        name = "interview_schedule_seq",
+        sequenceName = "interview_schedule_seq",
+        allocationSize = 1
+    )
+    private Long scheduleId;
 
 	private LocalDate date;
 	private LocalTime time;

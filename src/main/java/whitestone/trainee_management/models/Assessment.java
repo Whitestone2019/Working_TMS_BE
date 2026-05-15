@@ -9,9 +9,17 @@ import java.util.List;
 
 public class Assessment extends AuditModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "assessment_seq")
+	@SequenceGenerator(
+	    name = "assessment_seq",
+	    sequenceName = "assessment_seq",
+	    allocationSize = 1
+	)
+	private Long id;
 
     private String title;
 

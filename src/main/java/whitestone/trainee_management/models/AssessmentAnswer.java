@@ -6,10 +6,18 @@ import jakarta.persistence.*;
 @Table(name="assessment_answers")
 public class AssessmentAnswer extends AuditModel{
 
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Long id;
+//@Id
+//@GeneratedValue(strategy = GenerationType.IDENTITY)
+//private Long id;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "assessment_answer_seq")
+	@SequenceGenerator(
+	    name = "assessment_answer_seq",
+	    sequenceName = "assessment_answer_seq",
+	    allocationSize = 1
+	)
+	private Long id;	
 private Long assessmentId;
 
 private Long questionId;
