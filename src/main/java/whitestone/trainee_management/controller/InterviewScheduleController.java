@@ -19,7 +19,7 @@ import whitestone.trainee_management.service.InterviewScheduleService;
 import whitestone.trainee_management.service.*;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin
 
 @RequestMapping("/api/schedule")
 public class InterviewScheduleController {

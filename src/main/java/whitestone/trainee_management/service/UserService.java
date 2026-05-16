@@ -110,7 +110,7 @@ public class UserService {
 			
 			helper.setTo(emailid);
 			helper.setSubject("Your OTP for Trainee Management System");
-			helper.setFrom("nerdm09@gmail.com");
+			helper.setFrom("career@whitestones.co.in");
 			
 			String html = "<!DOCTYPE html>" + "<html>" + "<head>" + "<style>"
 					+ "  .container { font-family: Arial, sans-serif; padding: 20px; text-align: center; }"

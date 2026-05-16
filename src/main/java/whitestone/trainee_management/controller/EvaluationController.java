@@ -12,7 +12,7 @@ import java.util.Map;
 
 @RestController
 
-@CrossOrigin(origins="*")
+@CrossOrigin
 @RequestMapping("/api/assessmenttestcheck")
 public class EvaluationController {
 

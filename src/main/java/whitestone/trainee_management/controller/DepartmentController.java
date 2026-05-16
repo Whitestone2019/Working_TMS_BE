@@ -19,7 +19,7 @@ import whitestone.trainee_management.repository.TraineeDepartmentRepository;
 import whitestone.trainee_management.repository.UserRepository;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin
 @RequestMapping("/api/departments")
 
 public class DepartmentController {

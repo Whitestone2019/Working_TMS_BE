@@ -11,7 +11,7 @@ import whitestone.trainee_management.service.RoleService;
 
 @RestController
 @RequestMapping("/api/roles")
-@CrossOrigin(origins = "*")
+@CrossOrigin
 public class RoleController {
 
     @Autowired

@@ -10,7 +10,7 @@ import whitestone.trainee_management.service.TraineeDepartmentService;
 
 @RestController
 @RequestMapping("/api/trainee-departments")
-@CrossOrigin(origins = "*")
+@CrossOrigin
 public class TraineeDepartmentController {
 
     private final TraineeDepartmentService traineeDepartmentService;

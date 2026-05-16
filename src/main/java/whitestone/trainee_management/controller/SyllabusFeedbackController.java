@@ -12,7 +12,7 @@ import whitestone.trainee_management.service.SyllabusFeedbackService;
 
 @RestController
 @RequestMapping("/api/feedback")
-@CrossOrigin("*")
+@CrossOrigin
 public class SyllabusFeedbackController {
 
     private final SyllabusFeedbackService feedbackService;

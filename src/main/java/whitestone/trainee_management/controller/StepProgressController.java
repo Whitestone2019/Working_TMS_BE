@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/step-progress")
-@CrossOrigin(origins = "*")
+@CrossOrigin
 public class StepProgressController {
 
 	@Autowired

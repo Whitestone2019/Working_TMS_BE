@@ -22,7 +22,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api/syllabus")
-@CrossOrigin(origins = "*")
+@CrossOrigin
 public class SyllabusController {
 
     @Autowired

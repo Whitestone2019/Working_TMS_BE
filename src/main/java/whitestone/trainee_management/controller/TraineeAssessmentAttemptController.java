@@ -18,7 +18,7 @@ import whitestone.trainee_management.service.TraineeAssessmentAttemptService;
 
 @RestController
 @RequestMapping("/api/assessmenttest")
-@CrossOrigin(origins = "*") 
+@CrossOrigin
 public class TraineeAssessmentAttemptController {
 
 @Autowired
