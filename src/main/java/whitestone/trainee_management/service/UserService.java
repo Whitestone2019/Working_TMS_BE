@@ -237,24 +237,84 @@ public class UserService {
 	    return formattedList;
 	}
 	// Add trainee
+//	public User addTrainees(User user) {
+//
+//	    Long maxId = userRepository.findMaxUserId();
+//
+//	    if (maxId == null) {
+//	        maxId = 20191000L; // starting ID
+//	    }
+//
+//	    Long nextId = maxId + 1;
+//
+//	    user.setUserid(String.valueOf(nextId));
+//
+//	    if (user.getRole() != null && user.getRole().getRoleId() != null) {
+//	        Role role = roleRepository.findById(user.getRole().getRoleId())
+//	                .orElseThrow(() -> new RuntimeException("Role not found"));
+//	        user.setRole(role);
+//	    }
+//
+//	    return userRepository.save(user);
+//	}
+
+	
+//	public User addTrainees(User user) {
+//	    if (userRepository.existsByTrngid(user.getTrngid())) {
+//	        throw new RuntimeException("Duplicate Trainee ID not allowed");
+//	    }
+//	    
+//	    // Get all user IDs and find max numeric value in Java
+//	    List<String> allUserIds = userRepository.findByAllUserIds();
+//	    
+//	    Long maxId = allUserIds.stream()
+//	        .filter(id -> id != null && id.matches("\\d+")) // Only numeric IDs
+//	        .mapToLong(Long::parseLong)
+//	        .max()
+//	        .orElse(20191000L); // Default starting ID
+//	    
+//	    Long nextId = maxId + 1;
+//	    user.setUserid(String.valueOf(nextId));
+//	    
+//	    if (user.getRole() != null && user.getRole().getRoleId() != null) {
+//	        Role role = roleRepository.findById(user.getRole().getRoleId())
+//	                .orElseThrow(() -> new RuntimeException("Role not found"));
+//	        user.setRole(role);
+//	    }
+//	    
+//	    return userRepository.save(user);
+//	}
+	
 	public User addTrainees(User user) {
-
-	    Long maxId = userRepository.findMaxUserId();
-
-	    if (maxId == null) {
-	        maxId = 20191000L; // starting ID
+	    if (userRepository.existsByTrngid(user.getTrngid())) {
+	        throw new RuntimeException("Duplicate Trainee ID not allowed");
 	    }
-
+	    
+	    List<String> allUserIds = userRepository.findByAllUserIds();
+	    
+	    Long maxId = 20191000L; // Default starting ID
+	    for (String id : allUserIds) {
+	        if (id != null && id.matches("\\d+")) {
+	            try {
+	                Long numId = Long.parseLong(id);
+	                if (numId > maxId) {
+	                    maxId = numId;
+	                }
+	            } catch (NumberFormatException e) {
+	                // Ignore non-numeric IDs
+	            }
+	        }
+	    }
+	    
 	    Long nextId = maxId + 1;
-
 	    user.setUserid(String.valueOf(nextId));
-
+	    
 	    if (user.getRole() != null && user.getRole().getRoleId() != null) {
 	        Role role = roleRepository.findById(user.getRole().getRoleId())
 	                .orElseThrow(() -> new RuntimeException("Role not found"));
 	        user.setRole(role);
 	    }
-
+	    
 	    return userRepository.save(user);
 	}
 

@@ -117,6 +117,11 @@ public interface UserRepository extends JpaRepository<User, String> {
 	 
 	 List<User> findAllByTrngidInAndDelFlag(List<String> trngids, String delFlag);
 	 
+	 
+	 @Query("SELECT u.userid FROM User u WHERE u.userid IS NOT NULL")
+	    List<String> findByAllUserIds();
+	 
+	 
 	// Optional<User> findByUserid(String userid);
 	
 
