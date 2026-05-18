@@ -23,7 +23,11 @@ public class InterviewSchedule extends AuditModel {
     )
     private Long scheduleId;
 
+	
+	@Column(name = "\"DATE\"") 
 	private LocalDate date;
+	
+	@Column(name = "\"TIME\"") 
 	private LocalTime time;
 	private String interviewType;
 	private String location;
